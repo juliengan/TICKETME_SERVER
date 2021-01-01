@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -49,10 +50,10 @@ public class MyServerAndroid extends javax.swing.JFrame {
         lblClient.setBounds(100,30,268,30);
         contentPane.add(lblClient);
         
-        /*JTextArea txtAClient = new JTextArea("");
-        txtAClient.setBounds(50,70,268,30);
+        JTextArea txtAClient = new JTextArea("");
+        txtAClient.setBounds(50,70,268,100);
         contentPane.add(txtAClient);
-        */
+        
         JTextField txtClient = new JTextField("");
         txtClient.setBounds(50,170,268,30);
         contentPane.add(txtClient);
@@ -142,7 +143,7 @@ public class MyServerAndroid extends javax.swing.JFrame {
         try{
         Socket s = new Socket("10.0.2.16",5000);
         PrintWriter pw = new PrintWriter(s.getOutputStream());
-        pw.write(jTextField.getText());
+        pw.write(jTextField2.getText());
         pw.flush();
         pw.close();
         s.close();
