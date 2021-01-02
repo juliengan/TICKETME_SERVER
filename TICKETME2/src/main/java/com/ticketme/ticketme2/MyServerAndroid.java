@@ -216,10 +216,10 @@ public class MyServerAndroid extends javax.swing.JFrame {
             }
         });
         try {     
-            
+            ss = new ServerSocket(5000);
+
             while(true)
             {
-                ss = new ServerSocket(5000);
             //System.out.println("Server running port 5000");
             s = ss.accept();
             //System.out.println("ServerSocket accepted");
