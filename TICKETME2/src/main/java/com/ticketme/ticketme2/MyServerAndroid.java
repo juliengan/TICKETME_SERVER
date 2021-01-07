@@ -39,28 +39,6 @@ public class MyServerAndroid extends javax.swing.JFrame {
      * Creates the frame
      */
     public MyServerAndroid() {
-        /*setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100,100,450,300);
-        jPanel1 = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5,5,5,5));
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
-        
-        JLabel jLabel1 = new JLabel("TICKETME / SERVER SOFTWARE");
-        jLabel1.setBounds(100,30,268,30);
-        contentPane.add(jLabel1);
-        
-        JTextArea jTextArea2 = new JTextArea("");
-        jTextArea2.setBounds(50,70,268,100);
-        contentPane.add(jTextArea2);
-        
-        JTextField jTextField2 = new JTextField("");
-        jTextField2.setBounds(50,170,268,30);
-        contentPane.add(jTextField2);
-        
-        JButton jButton1 = new JButton("SEND TO THE CLIENT");
-        jButton1.setBounds(100,200,268,30);
-        contentPane.add(jButton1);*/
         initComponents();
     }
 
@@ -104,12 +82,17 @@ public class MyServerAndroid extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.setText("jTextField2");
+        jTextField2.setText("Message to send to the client");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(0, 102, 0));
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 255, 102));
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel1.setText("TICKETME / SERVER SOFTWARE");
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -182,6 +165,10 @@ public class MyServerAndroid extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -220,22 +207,24 @@ public class MyServerAndroid extends javax.swing.JFrame {
 
             while(true)
             {
-            //System.out.println("Server running port 5000");
+            System.out.println("Server running port 5000");
             s = ss.accept();
-            //System.out.println("ServerSocket accepted");
+            System.out.println("ServerSocket accepted");
 
             isr = new InputStreamReader(s.getInputStream()); //to rceive data
-            //System.out.println("Got socket input stream");
+            System.out.println("Got socket input stream");
 
             br = new BufferedReader(isr);
-            //System.out.println("buffered reader created");
+            System.out.println("buffered reader created");
 
             message = br.readLine();
             System.out.println(message);
-            isr.close();
+            
+            jTextArea2.setText(message);
+           /* isr.close();
             br.close();
             ss.close();
-            s.close();
+            s.close();*/
             }
         } catch (IOException ex) {
             Logger.getLogger(MyServerAndroid.class.getName()).log(Level.SEVERE, null, ex);
@@ -249,7 +238,7 @@ public class MyServerAndroid extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
+    private static javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
